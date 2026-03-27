@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios de Clase UPC 2026</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; margin: 20px; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        /* Estilos para la cabecera con logo */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #5d2a9d;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        .header-container img {
+            max-height: 50px; /* Ajusta la altura del logo */
+            width: auto;
+        }
+        .header-container h1 {
+            color: #5d2a9d;
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .modulo-header { background-color: #5d2a9d; color: white; padding: 10px 15px; font-weight: bold; margin-top: 25px; border-radius: 4px; display: flex; justify-content: space-between; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: #eee; text-align: left; padding: 12px; font-size: 0.9em; color: #666; }
+        td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .curso-nombre { font-weight: bold; color: #222; margin-bottom: 4px; }
+        .curso-id { font-size: 0.8em; color: #888; }
+        .horario-item { display: flex; align-items: center; margin-bottom: 5px; }
+        .dia-tag { border-left: 3px solid #ff4d4d; padding-left: 8px; margin-right: 10px; font-weight: 600; min-width: 35px; }
+        .modalidad { font-size: 0.85em; color: #666; font-style: italic; margin-left: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-container">
+        <h1>Mis Horarios Académicos - 2026</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png" alt="Logo UPC">
+    </div>
+
+    <div class="modulo-header">
+        <span>MÓDULO A (16-03-26 AL 08-05-26)</span>
+        <span>INICIO Y FIN / HORARIO</span>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <div class="curso-nombre">FÍSICA 2</div>
+                <div class="curso-id">1FCE0090</div>
+            </td>
+            <td>16-03-26 al 08-05-26</td>
+            <td>
+                <div class="horario-item"><span class="dia-tag">Lun</span> 19:00 - 21:59 <span class="modalidad">A distancia</span></div>
+                <div class="horario-item"><span class="dia-tag">Mié</span> 19:00 - 20:59 <span class="modalidad">A distancia</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="curso-nombre">CÁLCULO 2</div>
+                <div class="curso-id">1FCE0085</div>
+            </td>
+            <td>16-03-26 al 08-05-26</td>
+            <td>
+                <div class="horario-item"><span class="dia-tag">Mar</span> 19:00 - 21:59 <span class="modalidad">A distancia</span></div>
+                <div class="horario-item"><span class="dia-tag">Jue</span> 21:00 - 22:59 <span class="modalidad">A distancia</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="curso-nombre">FORMULACIÓN Y EVALUACIÓN DE PROYECTOS</div>
+                <div class="curso-id">1FIS0284</div>
+            </td>
+            <td>16-03-26 al 08-05-26</td>
+            <td>
+                <div class="horario-item"><span class="dia-tag">Mié</span> 21:00 - 22:59 <span class="modalidad">A distancia</span></div>
+                <div class="horario-item"><span class="dia-tag">Sáb</span> 19:00 - 20:59 <span class="modalidad">A distancia</span></div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="modulo-header">
+        <span>MÓDULO B (18-05-26 AL 24-07-26)</span>
+        <span>INICIO Y FIN / HORARIO</span>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <div class="curso-nombre">ANALÍTICA DE DATOS Y SISTEMAS PREDICTIVOS</div>
+                <div class="curso-id">1FIS0281</div>
+            </td>
+            <td>18-05-26 al 24-07-26</td>
+            <td>
+                <div class="horario-item"><span class="dia-tag">Lun</span> 19:00 - 22:59 <span class="modalidad">Monterrico</span></div>
+                <div class="horario-item"><span class="dia-tag">Mar</span> 20:00 - 21:59 <span class="modalidad">A distancia</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="curso-nombre">ARQUITECTURA DE SOFTWARE</div>
+                <div class="curso-id">1FIS0310</div>
+            </td>
+            <td>18-05-26 al 24-07-26</td>
+            <td>
+                <div class="horario-item"><span class="dia-tag">Jue</span> 19:00 - 21:59 <span class="modalidad">Villa</span></div>
+                <div class="horario-item"><span class="dia-tag">Vie</span> 20:00 - 21:59 <span class="modalidad">Villa</span></div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
