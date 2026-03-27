@@ -3,118 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horarios de Clase UPC 2026</title>
+    <title>MI UPC - Mis Estudios</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; margin: 20px; color: #333; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        * { box-box: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; height: 100vh; }
         
-        /* Estilos para la cabecera con logo */
-        .header-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px solid #5d2a9d;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        .header-container img {
-            max-height: 50px; /* Ajusta la altura del logo */
-            width: auto;
-        }
-        .header-container h1 {
-            color: #5d2a9d;
-            margin: 0;
-            font-size: 1.8em;
-        }
+        /* BARRA SUPERIOR */
+        header { background-color: white; height: 60px; display: flex; align-items: center; padding: 0 20px; border-bottom: 1px solid #ddd; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .logo-upc { background-color: #ed1c24; color: white; padding: 10px 20px; font-weight: bold; font-size: 20px; display: flex; align-items: center; border-radius: 4px; }
+        .top-icons { display: flex; gap: 20px; color: #666; font-size: 13px; align-items: center; }
+        .user-info { display: flex; align-items: center; gap: 10px; border-left: 1px solid #ddd; padding-left: 15px; }
 
-        .modulo-header { background-color: #5d2a9d; color: white; padding: 10px 15px; font-weight: bold; margin-top: 25px; border-radius: 4px; display: flex; justify-content: space-between; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { background: #eee; text-align: left; padding: 12px; font-size: 0.9em; color: #666; }
-        td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: top; }
-        .curso-nombre { font-weight: bold; color: #222; margin-bottom: 4px; }
-        .curso-id { font-size: 0.8em; color: #888; }
-        .horario-item { display: flex; align-items: center; margin-bottom: 5px; }
-        .dia-tag { border-left: 3px solid #ff4d4d; padding-left: 8px; margin-right: 10px; font-weight: 600; min-width: 35px; }
-        .modalidad { font-size: 0.85em; color: #666; font-style: italic; margin-left: 10px; }
+        .main-container { display: flex; flex: 1; overflow: hidden; }
+
+        /* MENÚ LATERAL */
+        nav { width: 180px; background-color: white; border-right: 1px solid #ddd; display: flex; flex-direction: column; padding-top: 20px; }
+        .nav-item { padding: 12px 20px; color: #444; font-size: 14px; text-decoration: none; display: flex; align-items: center; gap: 10px; border-left: 4px solid transparent; }
+        .nav-item.active { background-color: #fdf2f2; border-left: 4px solid #ed1c24; color: #ed1c24; font-weight: bold; }
+        .nav-item:hover { background-color: #f9f9f9; }
+
+        /* CONTENIDO PRINCIPAL */
+        main { flex: 1; padding: 30px; overflow-y: auto; }
+        .breadcrumb { font-size: 14px; color: #666; margin-bottom: 20px; }
+        .periodo-selector { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd; display: inline-block; width: 100%; }
+        
+        /* TABLA DE HORARIOS ESTILO UPC */
+        .modulo-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .modulo-header { background-color: #5d2a9d; color: white; padding: 12px 20px; display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #f8f9fa; text-align: left; padding: 15px 20px; color: #666; font-size: 12px; border-bottom: 1px solid #eee; }
+        td { padding: 20px; border-bottom: 1px solid #eee; vertical-align: top; font-size: 14px; }
+        
+        .curso-info { width: 35%; }
+        .curso-nombre { font-weight: bold; color: #333; margin-bottom: 5px; text-transform: uppercase; }
+        .curso-codigo { color: #888; font-size: 12px; }
+        
+        .horario-col { width: 40%; border-left: 1px solid #f0f0f0; }
+        .horario-row { display: flex; margin-bottom: 8px; align-items: center; }
+        .indicator { width: 4px; height: 15px; background-color: #ff4d4d; margin-right: 10px; }
+        .dia { font-weight: bold; margin-right: 10px; min-width: 30px; }
+        .lugar { color: #888; font-size: 13px; margin-left: 10px; font-style: italic; }
+
+        .estado-col { text-align: center; }
+        .tag-finalizado { background: #fee2e2; color: #b91c1c; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header-container">
-        <h1>Mis Horarios Académicos - 2026</h1>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/UPC_logo_transparente.png" alt="Logo UPC">
+<header>
+    <div class="logo-upc">MI UPC | 🌐</div>
+    <div class="top-icons">
+        <span>📧 CORREO</span>
+        <span>Bb AULA VIRTUAL</span>
+        <span>WeTALK</span>
+        <div class="user-info">
+            <span style="font-size: 12px; font-weight: bold;">LUIS FERNANDO...</span>
+            <div style="width: 30px; height: 30px; background: #ddd; border-radius: 50%;"></div>
+        </div>
     </div>
+</header>
 
-    <div class="modulo-header">
-        <span>MÓDULO A (16-03-26 AL 08-05-26)</span>
-        <span>INICIO Y FIN / HORARIO</span>
-    </div>
-    <table>
-        <tr>
-            <td>
-                <div class="curso-nombre">FÍSICA 2</div>
-                <div class="curso-id">1FCE0090</div>
-            </td>
-            <td>16-03-26 al 08-05-26</td>
-            <td>
-                <div class="horario-item"><span class="dia-tag">Lun</span> 19:00 - 21:59 <span class="modalidad">A distancia</span></div>
-                <div class="horario-item"><span class="dia-tag">Mié</span> 19:00 - 20:59 <span class="modalidad">A distancia</span></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="curso-nombre">CÁLCULO 2</div>
-                <div class="curso-id">1FCE0085</div>
-            </td>
-            <td>16-03-26 al 08-05-26</td>
-            <td>
-                <div class="horario-item"><span class="dia-tag">Mar</span> 19:00 - 21:59 <span class="modalidad">A distancia</span></div>
-                <div class="horario-item"><span class="dia-tag">Jue</span> 21:00 - 22:59 <span class="modalidad">A distancia</span></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="curso-nombre">FORMULACIÓN Y EVALUACIÓN DE PROYECTOS</div>
-                <div class="curso-id">1FIS0284</div>
-            </td>
-            <td>16-03-26 al 08-05-26</td>
-            <td>
-                <div class="horario-item"><span class="dia-tag">Mié</span> 21:00 - 22:59 <span class="modalidad">A distancia</span></div>
-                <div class="horario-item"><span class="dia-tag">Sáb</span> 19:00 - 20:59 <span class="modalidad">A distancia</span></div>
-            </td>
-        </tr>
-    </table>
+<div class="main-container">
+    <nav>
+        <a href="#" class="nav-item">🏠 Inicio</a>
+        <a href="#" class="nav-item">📋 Matrícula</a>
+        <a href="#" class="nav-item active">📖 Mis estudios</a>
+        <a href="#" class="nav-item">📊 Avance Académico</a>
+        <a href="#" class="nav-item">💰 Finanzas</a>
+        <a href="#" class="nav-item">📄 Documentos</a>
+    </nav>
 
-    <div class="modulo-header">
-        <span>MÓDULO B (18-05-26 AL 24-07-26)</span>
-        <span>INICIO Y FIN / HORARIO</span>
-    </div>
-    <table>
-        <tr>
-            <td>
-                <div class="curso-nombre">ANALÍTICA DE DATOS Y SISTEMAS PREDICTIVOS</div>
-                <div class="curso-id">1FIS0281</div>
-            </td>
-            <td>18-05-26 al 24-07-26</td>
-            <td>
-                <div class="horario-item"><span class="dia-tag">Lun</span> 19:00 - 22:59 <span class="modalidad">Monterrico</span></div>
-                <div class="horario-item"><span class="dia-tag">Mar</span> 20:00 - 21:59 <span class="modalidad">A distancia</span></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="curso-nombre">ARQUITECTURA DE SOFTWARE</div>
-                <div class="curso-id">1FIS0310</div>
-            </td>
-            <td>18-05-26 al 24-07-26</td>
-            <td>
-                <div class="horario-item"><span class="dia-tag">Jue</span> 19:00 - 21:59 <span class="modalidad">Villa</span></div>
-                <div class="horario-item"><span class="dia-tag">Vie</span> 20:00 - 21:59 <span class="modalidad">Villa</span></div>
-            </td>
-        </tr>
-    </table>
+    <main>
+        <div class="breadcrumb">Inicio > Mis estudios > Horario del periodo</div>
+        
+        <div class="periodo-selector">
+            <span style="font-size: 12px; color: #666;">Periodo</span><br>
+            <strong>202601 - 1er Semestre 2026</strong>
+        </div>
+
+        <div class="modulo-card">
+            <div class="modulo-header">
+                <span>MÓDULO A | DEL 16-03-26 AL 08-05-26</span>
+                <span>INICIO Y FIN / HORARIO / ESTADO</span>
+            </div>
+            <table>
+                <tr>
+                    <td class="curso-info">
+                        <div class="curso-nombre">Física 2</div>
+                        <div class="curso-codigo">1FCE0090</div>
+                    </td>
+                    <td style="color: #666; font-size: 13px;">Del 16-03-26<br>al 08-05-26</td>
+                    <td class="horario-col">
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Lun</span> 19:00 - 21:59 <span class="lugar">Villa - A distancia</span></div>
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Mié</span> 19:00 - 20:59 <span class="lugar">Villa - A distancia</span></div>
+                    </td>
+                    <td class="estado-col"><span class="tag-finalizado">CURSANDO</span></td>
+                </tr>
+                <tr>
+                    <td class="curso-info">
+                        <div class="curso-nombre">Cálculo 2</div>
+                        <div class="curso-codigo">1FCE0085</div>
+                    </td>
+                    <td style="color: #666; font-size: 13px;">Del 16-03-26<br>al 08-05-26</td>
+                    <td class="horario-col">
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Mar</span> 19:00 - 21:59 <span class="lugar">San Miguel - A distancia</span></div>
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Jue</span> 21:00 - 22:59 <span class="lugar">San Miguel - A distancia</span></div>
+                    </td>
+                    <td class="estado-col"><span class="tag-finalizado">CURSANDO</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="modulo-card">
+            <div class="modulo-header">
+                <span>MÓDULO B | DEL 18-05-26 AL 24-07-26</span>
+                <span>INICIO Y FIN / HORARIO / ESTADO</span>
+            </div>
+            <table>
+                <tr>
+                    <td class="curso-info">
+                        <div class="curso-nombre">Analítica de Datos y Sist. Predictivos</div>
+                        <div class="curso-codigo">1FIS0281</div>
+                    </td>
+                    <td style="color: #666; font-size: 13px;">Del 18-05-26<br>al 24-07-26</td>
+                    <td class="horario-col">
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Lun</span> 19:00 - 22:59 <span class="lugar">Monterrico</span></div>
+                        <div class="horario-row"><div class="indicator"></div><span class="dia">Mar</span> 20:00 - 21:59 <span class="lugar">A distancia</span></div>
+                    </td>
+                    <td class="estado-col"><span class="tag-finalizado" style="background:#eee; color:#666">PRÓXIMO</span></td>
+                </tr>
+            </table>
+        </div>
+    </main>
 </div>
 
 </body>
 </html>
+
